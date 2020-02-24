@@ -237,12 +237,9 @@ def _recompute_point_to_surface(verts, p, indecies, dist_type):
     dists.append(_compute_edge_dist(v32[type_2], p2[type_2]).view(-1))
     dists.append(_compute_edge_dist(v13[type_3], p3[type_3]).view(-1))
 
-    # print('MESH HERE!') #, dist_type)
     if len(np.where(type_4)[0]) > 0:
-        # print('MESH HERE! 0', dist_type)
         nor = torch.cross(v21[type_4], v13[type_4])
         dists.append(_compute_planar_dist(nor, p1[type_4]))
-        # print(len(dists))
 
     distances = torch.cat(dists)
 
